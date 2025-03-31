@@ -1,4 +1,5 @@
-package com.example.rotateimage;
+###7번문제
+package com.example.miblie_789;
 
 import android.os.Bundle;
 import android.view.View;
@@ -6,7 +7,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class CheckBox extends AppCompatActivity {
 
     private ImageView imageView;
     private float currentRotation = 0f; // 현재 회전 각도 저장
@@ -14,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.checkbox);
 
         // XML 요소 연결
         imageView = findViewById(R.id.image_view);
@@ -31,7 +32,105 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 --------------------------------------------------------------
-package com.example.rotateimage;
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Enabled 속성 체크박스 -->
+    <CheckBox
+        android:id="@+id/chk_enabled"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enabled 속성" />
+
+    <!-- Clickable 속성 체크박스 -->
+    <CheckBox
+        android:id="@+id/chk_clickable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Clickable 속성" />
+
+    <!-- 45도 회전 체크박스 -->
+    <CheckBox
+        android:id="@+id/chk_rotate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="45도 회전" />
+
+    <!-- 속성이 변경될 버튼 -->
+    <Button
+        android:id="@+id/btn_control"
+        android:layout_width="377dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Button"
+        app:cornerRadius="@android:dimen/dialog_min_width_major" />
+
+</LinearLayout>
+
+-------------------------------------------------------------------------
+###8번문제
+package com.example.miblie_789;
+
+
+import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class EditTextActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.edittext);
+
+        // XML 요소 가져오기
+        EditText edtInput = findViewById(R.id.edt_input);
+
+        // EditText의 텍스트 변경 감지 리스너 설정
+        edtInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                // 텍스트가 변경될 때마다 Toast 메시지 출력
+                Toast.makeText(EditText.this, "입력된 글자: " + s.toString(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+    }
+}
+-------------------------------------------------------------------------
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- 사용자 입력을 받을 EditText -->
+    <EditText
+        android:id="@+id/edt_input"
+        android:layout_width="375dp"
+        android:layout_height="wrap_content"
+        android:hint="입력하세요"
+        android:inputType="text" />
+
+</LinearLayout>
+
+-------------------------------------------------------------------------
+###9번문제
+package com.example.miblie_789;
 
 import android.os.Bundle;
 import android.view.View;
@@ -39,7 +138,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class Button extends AppCompatActivity {
 
     private ImageView imageView;
     private float currentRotation = 0f; // 현재 회전 각도 저장
@@ -47,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.button);
 
         // XML 요소 연결
         imageView = findViewById(R.id.image_view);
@@ -64,76 +163,9 @@ public class MainActivity extends AppCompatActivity {
     }
 }
 -------------------------------------------------------------------------
-package com.example.rotateimage;
-
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import androidx.appcompat.app.AppCompatActivity;
-
-public class MainActivity extends AppCompatActivity {
-
-    private ImageView imageView;
-    private float currentRotation = 0f; // 현재 회전 각도 저장
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        // XML 요소 연결
-        imageView = findViewById(R.id.image_view);
-        Button rotateButton = findViewById(R.id.rotate_button);
-
-        // 버튼 클릭 시 이미지 회전
-        rotateButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                currentRotation += 10f; // 10도씩 증가
-                imageView.setRotation(currentRotation); // 회전 적용
-            }
-        });
-    }
-}
----------------------------------------------------------------------
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <!-- 사용자 입력을 받을 EditText -->
-    <EditText
-        android:id="@+id/edt_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="입력하세요"
-        android:inputType="text" />
-
-</LinearLayout>
----------------------------------------------------------------
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
-
-    <!-- 사용자 입력을 받을 EditText -->
-    <EditText
-        android:id="@+id/edt_input"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="입력하세요"
-        android:inputType="text" />
-
-</LinearLayout>
-
------------------------------------------------------------------
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -141,22 +173,25 @@ public class MainActivity extends AppCompatActivity {
     android:padding="16dp">
 
     <!-- 이미지 회전 버튼 -->
-    <Button
-        android:id="@+id/rotate_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="회전하기"
-        android:drawableLeft="@mipmap/ic_launcher"
-        android:padding="10dp"
-        android:layout_marginBottom="20dp"/>
 
     <!-- 회전할 이미지 -->
+
+    <Button
+        android:id="@+id/rotate_button"
+        android:layout_width="241dp"
+        android:layout_height="71dp"
+        android:layout_marginBottom="21dp"
+        android:drawableLeft="@mipmap/q10"
+        android:drawableRight="@mipmap/q10"
+        android:padding="9dp"
+        android:text="회전하기"
+        app:cornerRadius="@dimen/material_emphasis_disabled" />
+
     <ImageView
         android:id="@+id/image_view"
-        android:layout_width="200dp"
-        android:layout_height="200dp"/>
-        <!-- android:src="@drawable/sample_image"
-        android:scaleType="centerInside"/> -->
+        android:layout_width="329dp"
+        android:layout_height="320dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/dog3" />
 </LinearLayout>
-
 
